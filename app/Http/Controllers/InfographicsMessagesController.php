@@ -24,7 +24,7 @@ class InfographicsMessagesController extends Controller
         //     'app_thumbnail' => 'required|mimes:jpg,png,jpeg|max:5048'
         // ]);
 
-        $newImageName = time().'-'.$request->infographics_subject . '.'.$request->image_path->extension();
+        $newImageName = time().'-'.$request->image_path->getClientOriginalName();
 
         $request->image_path->move(public_path('infographics_displays'), $newImageName);
             

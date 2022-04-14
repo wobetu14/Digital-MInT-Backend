@@ -8,7 +8,7 @@ use App\Models\DownloadableFile;
 class DownloadableFilesController extends Controller
 {
     public function index(){
-        $files=DownloadableFile::all();
+        $files=DownloadableFile::orderBy('created_at','desc')->get();
         return response()->json($files);
     }
 

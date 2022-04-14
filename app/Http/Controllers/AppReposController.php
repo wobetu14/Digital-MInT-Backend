@@ -26,8 +26,8 @@ class AppReposController extends Controller
         //     'app_url' => 'required',
         //     'app_thumbnail' => 'required|mimes:jpg,png,jpeg|max:5048'
         // ]);
-
-        $newImageName = time().'-'.$request->app_name . '.'.$request->app_thumbnail->extension();
+            
+        $newImageName = time().'-'.$request->app_thumbnail->getClientOriginalName();
 
         $request->app_thumbnail->move(public_path('app_thumbnails'), $newImageName);
             
@@ -45,11 +45,10 @@ class AppReposController extends Controller
             );
         }
 
-    //    $create_repo=AppRepo::create($request->all());
-    //    if($create_repo){
-    //        return response()->json(
-    //            ['success'=>'App Info has been created successfully.']
-    //        );
-    //    }
+        else{
+            return response()->json([
+                'error'=>'Oops! Something went wrong in creating new app repository.'
+            ]);
+        }
     }
 }

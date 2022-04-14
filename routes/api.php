@@ -26,12 +26,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // MInT Digital Systems (App repos)
 Route::get('all-apps',[AppReposController::class,'index']);
 Route::get('app/{app_name}',[AppReposController::class,'searchAppRepo']);
-
 Route::post('create_new_app',[AppReposController::class, 'store']);
 
 // Corporate Notices
 // Get all notices
 Route::get('corporate_notices',[CorporateNoticesController::class, 'index']);
+Route::post('create_new_notice',[CorporateNoticesController::class, 'store']);
 
 // Corporate Notices displayed on the side bar
 Route::get('side_notices',[CorporateNoticesController::class,'getSideNotices']);

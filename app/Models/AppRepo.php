@@ -16,6 +16,6 @@ class AppRepo extends Model
         'app_description',
         'app_ipaddress',
         'app_url',
-        // 'app_thumbnail'
+        'app_thumbnail'
     ];
 }
