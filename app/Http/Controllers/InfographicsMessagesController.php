@@ -9,7 +9,7 @@ class InfographicsMessagesController extends Controller
 {
     public function index(){
         $infographicsMessages=InfographicsMessage::where('display_status', 'active')
-        ->take(2)
+        ->take(1)
         ->orderBy('created_at','desc')
         ->get();
         return response()->json($infographicsMessages);

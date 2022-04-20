@@ -19,6 +19,8 @@ class AppReposController extends Controller
 
     public function store(Request $request){
 
+        return "Hello";
+
         // $request->validate([
         //     'app_name' => 'required',
         //     'app_description' => 'required',

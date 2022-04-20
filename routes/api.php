@@ -7,6 +7,8 @@ use App\Http\Controllers\CorporateNoticesController;
 use App\Http\Controllers\AddressBooksController;
 use App\Http\Controllers\InfographicsMessagesController;
 use App\Http\Controllers\DownloadableFilesController;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +25,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('login', [AuthController::class, 'getLogin']);
+Route::post('login',[AuthController::class, 'login']);
+
 // MInT Digital Systems (App repos)
 Route::get('all-apps',[AppReposController::class,'index']);
 Route::get('app/{app_name}',[AppReposController::class,'searchAppRepo']);
-Route::post('create_new_app',[AppReposController::class, 'store']);
+Route::post('create_new_app',[AppReposController::class, 'store'])->middleware(['auth:sanctum']);
 
 // Corporate Notices
 // Get all notices
