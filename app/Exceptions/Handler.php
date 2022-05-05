@@ -44,8 +44,8 @@ class Handler extends ExceptionHandler
      * Custom authenticator added by me (Wobetu)
      */
 
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-    return response()->json(['error' => 'Unauthenticated user.'], 401);
-    }
+    // protected function unauthenticated($request, AuthenticationException $exception)
+    // {
+    // return response()->json(['error' => 'Unauthenticated user.'], 401);
+    // }
 }

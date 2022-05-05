@@ -15,10 +15,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('user_id')->unique(); // not equivalent to the default Model-relation id - user_id binding
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->nullable(); // for future use
             $table->rememberToken();
             $table->timestamps();
         });
