@@ -53,15 +53,16 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-        // $user_fields=$request->validate([
-        //     'email'=>'required|string',
-        //     'password'=>'required|string'
-        // ]);
+        $user_fields=$request->validate([
+            'email'=>'required|string',
+            'password'=>'required|string'
+        ]);
 
-        $auth_user=Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+        $auth_user=Auth::attempt(['email' => $user_fields['email'], 'password' => $user_fields['password']]);
         if($auth_user){
             $user=Auth::user();
             $response=[
+                'logged_in'=>1,
                 'user'=>$user,
                 'token'=>$user->createToken($user->email)->plainTextToken
             ];
@@ -69,7 +70,8 @@ class AuthController extends Controller
 
         else {
             $response=[
-                'error'=>'Invalid email or password.'
+                'logged_in'=>0,
+                'login_error'=>'Invalid email or password.'
             ];
         }
 
